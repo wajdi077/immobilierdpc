@@ -1,0 +1,73 @@
+info: 
+  app: 
+    name: immobilier
+    description: DPC IMMOBILIER
+server:
+  context-path: /immobilier
+  port: 8181
+
+spring:
+  main:
+    banner-mode: console
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: immo.devis18@gmail.com
+    password: dpcimmo18
+    port: 25
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false   
+  datasource:
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    jmx-enabled: true
+    initialize: false
+    url: jdbc:postgresql://192.168.99.100:5432/immo
+    username: wajdi
+    password: wajdi
+    tomcat:
+      initial-size: 0
+      max-active: 10
+      max-idle: 10
+      max-wait: 1000
+      min-idle: 0
+      test-on-borrow: true
+      test-while-idle: true
+      validation-query: select 1
+      validation-query-timeout: 1
+      
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: public
+  autoconfigure:
+    exclude:
+    - org.springframework.cloud.aws.autoconfigure.context.ContextStackAutoConfiguration
+
+logging:
+  level:
+   root: INFO
+   
+
+flyway:
+  enabled: false
+  baseline-on-migrate: true
+  jwt:
+    header: Authorisation
+    expires_in: 100000000
+    mobile_expires_in: 100000
+    secret: amina
+    cookie: AUTH-TOKEN
+    
+  
+
